@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: citadel-raven-rag
+  main:
+    allow-bean-definition-overriding: true
+  ai:
+    vertex:
+      ai:
+        gemini:
+          project-id: ${GCP_PROJECT_ID:citadel-westeros-gcp}
+          location: ${GCP_LOCATION:us-central1}
+          chat:
+            options:
+              model: ${GEMINI_MODEL:gemini-2.5-flash}
+        embedding:
+          project-id: ${GCP_PROJECT_ID:citadel-westeros-gcp}
+          location: ${GCP_LOCATION:us-central1}
+          text:
+            options:
+              model: text-embedding-004
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        # Corrigido de COSINE para COSINE_DISTANCE
+        distance-type: COSINE_DISTANCE
+        dimensions: 768
+        initialize-schema: true
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/citadel_db}
+    username: ${DB_USER:maester}
+    password: ${DB_PASS:high_valyrian_secret}
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 8080
