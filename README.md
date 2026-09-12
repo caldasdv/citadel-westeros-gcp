@@ -173,7 +173,21 @@ server:
 
 ---
 
-### 4. Build de Imagem no Cloud Build & Deploy no Cloud Run
+### 4. Proxy do banco local
+
+```powershell
+$env:PROJECT_ID = "citadel-westeros-gcp"
+$env:REGION = "us-central1"
+$env:DB_INSTANCE_NAME = "citadel-vault-db"
+
+# 1. Recuperar o Connection Name da instância (Formato: projeto:regiao:instancia)
+$CONN_NAME = (gcloud sql instances describe $env:DB_INSTANCE_NAME --format="value(connectionName)")
+
+# 2. Iniciar o Proxy redirecionando para a porta 5432 local
+.\cloud-sql-proxy.exe --port 5432 $CONN_NAME
+```
+
+### 5. Build de Imagem no Cloud Build & Deploy no Cloud Run
 
 #### Compilação e envio ao Artifact Registry
 ```powershell
