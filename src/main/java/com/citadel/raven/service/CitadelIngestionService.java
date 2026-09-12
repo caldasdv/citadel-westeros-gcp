@@ -31,7 +31,7 @@ public class CitadelIngestionService {
         var textSplitter = new TokenTextSplitter(500, 100, 5, 10000, true);
         List<Document> chunkedKnowledge = textSplitter.apply(rawDocuments);
 
-        // 3. Vetorizar e salvar no PGVector (embeddings gerados via Vertex AI)
+        // 3. Vetorizar localmente com Ollama e salvar no PGVector
         vectorStore.accept(chunkedKnowledge);
 
         return chunkedKnowledge.size();
