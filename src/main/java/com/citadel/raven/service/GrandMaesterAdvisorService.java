@@ -24,7 +24,7 @@ public class GrandMaesterAdvisorService {
                 .defaultAdvisors(QuestionAnswerAdvisor.builder(citadelVault)
                         .searchRequest(SearchRequest.builder()
                                 .topK(3)
-                                .similarityThreshold(0.7)
+                                .similarityThreshold(0.5)
                                 .build())
                         .build())
                 .build();
