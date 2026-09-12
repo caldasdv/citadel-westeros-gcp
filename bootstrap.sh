@@ -1,5 +1,5 @@
 # Setar variáveis
-export PROJECT_ID="citadel-westeros-gcp"
+export PROJECT_ID="citadel-westeros-david"
 export REGION="us-central1"
 export DB_INSTANCE_NAME="citadel-vault-db"
 export DB_NAME="citadel_db"

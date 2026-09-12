@@ -1,35 +1,31 @@
 spring:
   application:
     name: citadel-raven-rag
-  main:
-    allow-bean-definition-overriding: true
   ai:
-    vertex:
-      ai:
-        gemini:
-          project-id: ${GCP_PROJECT_ID:citadel-westeros-gcp}
-          location: ${GCP_LOCATION:us-central1}
-          chat:
-            options:
-              model: ${GEMINI_MODEL:gemini-2.5-flash}
-        embedding:
-          project-id: ${GCP_PROJECT_ID:citadel-westeros-gcp}
-          location: ${GCP_LOCATION:us-central1}
-          text:
-            options:
-              model: text-embedding-004
+    model:
+      chat: ollama
+      embedding: ollama
+    ollama:
+      base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        options:
+          model: ${OLLAMA_CHAT_MODEL:llama3.2:3b}
+          temperature: 0.2
+          num-ctx: 4096
+      embedding:
+        options:
+          model: ${OLLAMA_EMBEDDING_MODEL:embeddinggemma}
     vectorstore:
       pgvector:
         index-type: HNSW
-        # Corrigido de COSINE para COSINE_DISTANCE
         distance-type: COSINE_DISTANCE
         dimensions: 768
         initialize-schema: true
 
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/citadel_db}
-    username: ${DB_USER:maester}
-    password: ${DB_PASS:high_valyrian_secret}
+    username: ${SPRING_DATASOURCE_USERNAME:${DB_USER:maester}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${DB_PASS:high_valyrian_secret}}
     driver-class-name: org.postgresql.Driver
 
 server:

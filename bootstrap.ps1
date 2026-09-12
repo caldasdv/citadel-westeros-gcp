@@ -1,5 +1,5 @@
 # Setar variáveis de ambiente no PowerShell
-$env:PROJECT_ID = "citadel-westeros-gcp"
+$env:PROJECT_ID = "citadel-westeros-david"
 $env:REGION = "us-central1"
 $env:DB_INSTANCE_NAME = "citadel-vault-db"
 $env:DB_NAME = "citadel_db"

@@ -44,7 +44,7 @@ Three-piece Spring AI RAG pipeline, all under `com.citadel.raven`:
 - `web/SmallCouncilController` — exposes both as REST endpoints under `/api/v1/small-council` (`POST /ingest`, `GET /consult-raven?query=`).
 
 Config (`src/main/resources/application.yml`) wires:
-- Vertex AI Gemini chat model + Vertex AI `text-embedding-004` embeddings, project id from `GCP_PROJECT_ID` (defaults to `citadel-westeros-gcp`), region `us-central1`.
+- Vertex AI Gemini chat model + Vertex AI `text-embedding-004` embeddings, project id from `GCP_PROJECT_ID` (defaults to `citadel-westeros-david`), region `us-central1`.
 - PGVector store: HNSW index, `COSINE_DISTANCE`, 768 dimensions, schema auto-initialized.
 - Datasource from `SPRING_DATASOURCE_URL` / `DB_USER` / `DB_PASS` (defaults point at a local Postgres `citadel_db`).
 
