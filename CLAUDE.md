@@ -45,6 +45,10 @@ mise exec -- mvn test
 
 # Run the application natively
 mise exec -- mvn spring-boot:run
+
+# Or manage the complete local stack in the background
+./scripts/start-local.sh
+./scripts/stop-local.sh
 ```
 
 There are currently no test sources under `src/test`; `mvn test` still validates dependency resolution and compilation.

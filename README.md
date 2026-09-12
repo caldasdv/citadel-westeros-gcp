@@ -72,6 +72,26 @@ ollama list
 
 ## Executar
 
+### Inicialização automática
+
+O caminho recomendado sobe o Docker Desktop quando necessário, PostgreSQL/pgvector, Ollama, os modelos e a aplicação Spring Boot:
+
+```bash
+./scripts/start-local.sh
+```
+
+A aplicação roda em background. A saída fica em `.runtime/application.log`.
+
+Para parar a aplicação, o container do banco e o serviço Ollama sem apagar dados ou modelos:
+
+```bash
+./scripts/stop-local.sh
+```
+
+O script não fecha o Docker Desktop, pois ele pode estar executando outros projetos.
+
+### Inicialização manual
+
 Abra o Docker Desktop e aguarde o engine ficar disponível. Em seguida, inicie o banco:
 
 ```bash
